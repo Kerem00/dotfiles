@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+import requests
+from bs4 import BeautifulSoup
+
+soup = BeautifulSoup(requests.get("https://kernel.org").content, "html.parser")
+
+print(soup.find("td", {"id": "latest_link"}).find_next("a").getText())
